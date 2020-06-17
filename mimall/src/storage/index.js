@@ -17,6 +17,9 @@ export default {
   },
   getItem (key, module_name) {
     if (module_name) {
+      if (!module_name) {
+        return
+      }
       let val = this.getItem(module_name)
       if (val) return val[key]
     }

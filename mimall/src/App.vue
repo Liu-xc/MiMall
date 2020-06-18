@@ -9,7 +9,6 @@ export default {
   name: 'app',
   data () {
     return {
-      res: ''
     }
   },
   mounted () {
@@ -19,10 +18,12 @@ export default {
     // })
     // 通过easy-mock平台
     // 本地集成mockjs
-    this.axios.get('user/login.json').then((res) => {
-      this.res = res
-    })
+    // this.axios.get('user/login.json').then((res) => {
+    //   this.res = res
+    // })
   },
 }
 </script>
-<style lang="stylus"></style>
+<style lang="scss">
+@import url('./assets/scss/reset.scss');
+</style>

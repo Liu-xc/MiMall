@@ -8,7 +8,7 @@ import VueAxios from 'vue-axios'
 import App from './App.vue'
 
 // mock开关
-const mock = true
+const mock = false
 if (mock) {
   require('../public/mock/api.js')
 }

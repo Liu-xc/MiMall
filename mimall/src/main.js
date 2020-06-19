@@ -6,6 +6,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 // import env from './env'
 import App from './App.vue'
+import './assets/scss/base.scss'
+
 
 // mock开关
 const mock = false

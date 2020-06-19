@@ -106,11 +106,7 @@ export default {
           pageSize: 6
         }
       }).then((res) => {
-        if (res.list > 6) {
-          this.phoneList = res.list.slice(0, 6)
-        } else {
-          this.phoneList = res.list
-        }
+        this.phoneList = res.list
       })
     },
     goToCart () {

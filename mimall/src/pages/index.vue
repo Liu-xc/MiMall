@@ -30,8 +30,16 @@
           <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
       </div>
-      <div class="ads-box"></div>
-      <div class="banner"></div>
+      <div class="ads-box">
+        <a href="/#/product/30" v-for="i in 4" :key="i">
+          <img src="../../static/imgs/ads/ads-1.png" alt />
+        </a>
+      </div>
+      <div class="banner">
+        <a href="/#/product/30">
+          <img src="../../static/imgs/banner-1.png" alt />
+        </a>
+      </div>
       <div class="product-box"></div>
     </div>
     <service-bar></service-bar>
@@ -106,6 +114,12 @@ export default {
           img: '../../static/imgs/item-box-1.png',
           name: '小米CCC9'
         }
+      ],
+      adsList: [
+        {
+          id: 33,
+          img: '../../static/imgs/ads/ads-1.png'
+        }
       ]
     }
   },
@@ -127,6 +141,8 @@ export default {
 <style lang="scss">
 @import './../assets/scss/mixin.scss';
 @import './../assets/scss/config.scss';
+@import './../assets/scss/base.scss';
+
 .index {
   .swiper-box {
     .swiper-container {
@@ -208,6 +224,19 @@ export default {
         }
       }
     }
+  }
+  .ads-box {
+    margin-top: 20px;
+    @include flex();
+    a {
+      display: inline-block;
+      width: 290px;
+      height: 167px;
+    }
+  }
+  .banner {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 </style>

@@ -2,6 +2,14 @@
   <div class="index">
     <div class="container">
       <div class="swiper-box">
+        <div class="nav-menu">
+          <ul class="menu-wrap">
+            <li class="menu-item" v-for="item in productClass" :key="item">
+              <a href="javascript:;">{{item}}</a>
+              <div class="children"></div>
+            </li>
+          </ul>
+        </div>
         <swiper :options="swiperOption">
           <swiper-slide v-for="item in slideList" :key="item.img">
             <a :href="'/#/product/'+item.id">
@@ -79,6 +87,9 @@ export default {
           id: '',
           img: '/slider/slide-5.jpg'
         }
+      ],
+      productClass: [
+        '手机 电话卡', '电话 盒子', '笔记本 平板', '家电 插线板', '出行 穿戴', '智能 路由器', '电源 配件', '生活 箱包'
       ]
     }
   },
@@ -98,13 +109,52 @@ export default {
 </script>
 
 <style lang="scss">
+@import './../assets/scss/mixin.scss';
+@import './../assets/scss/config.scss';
 .index {
   .swiper-box {
     .swiper-container {
       height: 451px;
       img {
         width: 100%;
-        height: auto;
+        height: 451px;
+      }
+      .swiper-button-prev {
+        left: 274px;
+      }
+    }
+    .nav-menu {
+      box-sizing: border-box;
+      position: absolute;
+      width: 264px;
+      height: 451px;
+      z-index: 9;
+      padding: 26px 0;
+      background-color: #80808085;
+
+      .menu-wrap {
+        .menu-item {
+          height: 50px;
+          line-height: 50px;
+
+          a {
+            position: relative;
+            display: block;
+            font-size: 16px;
+            color: white;
+            padding-left: 30px;
+            &::after {
+              content: '';
+              position: absolute;
+              right: 30px;
+              top: 17px;
+              @include bgImg(10px, 15px, '../../static/imgs/icon-arrow.png');
+            }
+          }
+          &:hover {
+            background-color: $colorA;
+          }
+        }
       }
     }
   }

@@ -6,7 +6,16 @@
           <ul class="menu-wrap">
             <li class="menu-item" v-for="item in productClass" :key="item">
               <a href="javascript:;">{{item}}</a>
-              <div class="children"></div>
+              <div class="children">
+                <ul v-for="i in 6" :key="i">
+                  <li v-for="j in 4" :key="j">
+                    <a href="/#/product/30">
+                      <img src="../../static/imgs/item-box-1.png" alt />
+                      小米CCC9
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
@@ -90,6 +99,13 @@ export default {
       ],
       productClass: [
         '手机 电话卡', '电话 盒子', '笔记本 平板', '家电 插线板', '出行 穿戴', '智能 路由器', '电源 配件', '生活 箱包'
+      ],
+      menuList: [
+        {
+          id: 30,
+          img: '../../static/imgs/item-box-1.png',
+          name: '小米CCC9'
+        }
       ]
     }
   },
@@ -153,6 +169,41 @@ export default {
           }
           &:hover {
             background-color: $colorA;
+            .children {
+              display: block;
+            }
+          }
+          .children {
+            display: none;
+            width: 962px;
+            height: 451px;
+            background-color: $colorG;
+            position: absolute;
+            top: 0;
+            left: 264px;
+            right: 0;
+            border: 1px solid #e5e5e5;
+            ul {
+              display: flex;
+              justify-content: space-between;
+              height: 75px;
+              li {
+                height: 75px;
+                line-height: 75px;
+                flex: 1;
+                padding-left: 23px;
+              }
+              a {
+                color: $colorB;
+                font-size: 14px;
+              }
+              img {
+                width: 42px;
+                height: 35px;
+                vertical-align: middle;
+                margin-right: 15px;
+              }
+            }
           }
         }
       }

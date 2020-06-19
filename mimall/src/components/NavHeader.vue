@@ -44,13 +44,28 @@
           </div>
           <div class="item-menu">
             <span>RedMi红米</span>
-            <div class="children"></div>
+            <div class="children">
+              <ul>
+                <li class="product" v-for="i in 6" :key="i">
+                  <a href target="_blank">
+                    <div class="pro-img">
+                      <img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6a6548361871303764d6c66142074524.png"
+                        alt
+                      />
+                    </div>
+                    <div class="pro-name">小米CC9</div>
+                    <div class="pro-price">1799元</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="item-menu">
             <span>电视</span>
             <div class="children">
               <ul>
-                <li class="product">
+                <li class="product" v-for="i in 6" :key="i">
                   <a href target="_blank">
                     <div class="pro-img">
                       <img
@@ -141,7 +156,7 @@ export default {
         text-align: center;
         color: white;
         .icon-cart {
-          @include bgImg(16px, 12px, '/imgs/icon-cart-checked.png');
+          @include bgImg(16px, 12px, '../../static/imgs/icon-cart-checked.png');
           margin-right: 4px;
         }
       }
@@ -164,12 +179,12 @@ export default {
           height: 55px;
           &::before {
             content: '';
-            @include bgImg(55px, 55px, '../static/imgs/mi-logo.png');
+            @include bgImg(55px, 55px, '../../static/imgs/mi-logo.png');
             transition: margin 0.4s;
           }
           &::after {
             content: '';
-            @include bgImg(55px, 55px, '../static/imgs/mi-home.png');
+            @include bgImg(55px, 55px, '../../static/imgs/mi-home.png');
           }
           &:hover::before {
             margin-left: -55px;
@@ -207,7 +222,7 @@ export default {
             height: 0;
             opacity: 0;
             box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
-            transition: opacity, height 0.3s;
+            transition: all 0.3s 0.3s;
 
             .product {
               position: relative;
@@ -274,7 +289,7 @@ export default {
         padding-left: 14px;
       }
       a {
-        @include bgImg(18px, 18px, '../static/imgs/icon-search.png');
+        @include bgImg(18px, 18px, '../../static/imgs/icon-search.png');
         margin-left: 18px;
       }
     }

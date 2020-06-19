@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="footer-logo">
-      <img src="../static/imgs/logo-footer.png" alt />
+      <img src="../../static/imgs/logo-footer.png" alt />
       <p>小米商城</p>
     </div>
     <div class="footer-link">

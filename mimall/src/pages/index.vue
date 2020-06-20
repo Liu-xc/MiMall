@@ -32,12 +32,12 @@
       </div>
       <div class="ads-box">
         <a href="/#/product/30" v-for="i in 4" :key="i">
-          <img src="../../static/imgs/ads/ads-1.png" alt />
+          <img v-lazy="require('../../static/imgs/ads/ads-1.png')" alt />
         </a>
       </div>
       <div class="banner">
         <a href="/#/product/30">
-          <img src="../../static/imgs/banner-1.png" alt />
+          <img v-lazy="require('../../static/imgs/banner-1.png')" alt />
         </a>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <div class="wrapper">
           <div class="banner-left">
             <a href="/#/product/35">
-              <img src="../../static/imgs/mix-alpha.jpg" alt />
+              <img v-lazy="require('../../static/imgs/mix-alpha.jpg')" alt />
             </a>
           </div>
           <div class="list-box">
@@ -55,7 +55,7 @@
               <div class="item" v-for="(item, j) in arr" :key="j">
                 <span :class="{'new-pro': j%2===0, 'kill-pro': j%2===1}">新品</span>
                 <div class="item-img">
-                  <img :src="item.mainImage" alt />
+                  <img v-lazy="item.mainImage" alt />
                 </div>
                 <div class="item-info">
                   <h3>{{item.name}}</h3>

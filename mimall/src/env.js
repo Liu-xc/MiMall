@@ -15,6 +15,7 @@ switch (process.env.NODE_ENV) {
     baseURL = 'http://mall-pre.springboot.cn/api'
     break
 }
+
 export default {
   baseURL
 }

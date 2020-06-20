@@ -51,16 +51,16 @@
             </a>
           </div>
           <div class="list-box">
-            <div class="list" v-for="i in 2" :key="i">
-              <div class="item" v-for="j in 4" :key="j">
-                <span>新品</span>
+            <div class="list" v-for="(arr, i) in phoneLIst" :key="i">
+              <div class="item" v-for="(item, j) in arr" :key="j">
+                <span :class="{'new-pro': j%2===0, 'kill-pro': j%2===1}">新品</span>
                 <div class="item-img">
-                  <img src="../../static/imgs/item-box-2.png" alt />
+                  <img :src="item.mainImage" alt />
                 </div>
                 <div class="item-info">
-                  <h3>小米9</h3>
-                  <p>hello world</p>
-                  <p class="price">2999元</p>
+                  <h3>{{item.name}}</h3>
+                  <p>{{item.subtitle}}</p>
+                  <p class="price">{{item.price | currency}}</p>
                 </div>
               </div>
             </div>
@@ -146,7 +146,8 @@ export default {
           id: 33,
           img: '../../static/imgs/ads/ads-1.png'
         }
-      ]
+      ],
+      phoneLIst: []
     }
   },
   methods: {
@@ -156,10 +157,42 @@ export default {
         item.img = require(`../../static/imgs${img}`)
       }
       return list
+    },
+    async init () {
+      await this.axios.get('/products', {
+        params: {
+          categoray: {
+            categoryId: 100012,
+            pageSize: 8
+          }
+        }
+      }).then((res) => {
+        this.phoneLIst = [res.list.slice(0, 4), res.list.slice(4, 8)]
+      })
+      this.getPhoneListImg()
+    },
+    getPhoneListImg(){
+      let list = this.phoneLIst
+      for(let arr of list) {
+        for (let item of arr) {
+          const flag = item.mainImage.search('http') === -1
+          if (flag) {
+            item.mainImage = item.imageHost + '/' + item.mainImage
+          }
+        }
+      }
+      this.phoneLIst = list
+    }
+  },
+  filters: {
+    currency (val) {
+      if (!val) return '0.00';
+      return '￥' + val.toFixed(2) + '元'
     }
   },
   mounted () {
     this.slideList = this.getImgs(this.slideList)
+    this.init()
   },
 }
 </script>
@@ -299,6 +332,19 @@ export default {
             background: white;
             text-align: center;
             span {
+              display: inline-block;
+              width: 67px;
+              height: 24px;
+              font-size: 14px;
+              text-align: center;
+              line-height: 24px;
+              color: white;
+              &.new-pro {
+                background-color: #7ecf68;
+              }
+              &.kill-pro {
+                background: #e82626;
+              }
             }
             .item-img {
               img {

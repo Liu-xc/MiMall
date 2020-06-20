@@ -69,6 +69,11 @@
       </div>
     </div>
     <service-bar></service-bar>
+    <modal title="提示" sureText="查看购物车" btnType="1" modalType="middle" :showModal="showModal">
+      <template v-slot:body>
+        <p>商品添加成功！</p>
+      </template>
+    </modal>
   </div>
 </template>
 
@@ -76,18 +81,21 @@
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 import ServiceBar from '../components/ServiceBar'
+import Modal from '../../src/components/Modal'
 export default {
   name: 'index',
   components: {
     ServiceBar,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    Modal
   },
   directives: {
     swiper: directive
   },
   data () {
     return {
+      showModal: true,
       swiperOption: {
         autoplay: true,
         loop: true,
@@ -171,9 +179,9 @@ export default {
       })
       this.getPhoneListImg()
     },
-    getPhoneListImg(){
+    getPhoneListImg () {
       let list = this.phoneLIst
-      for(let arr of list) {
+      for (let arr of list) {
         for (let item of arr) {
           const flag = item.mainImage.search('http') === -1
           if (flag) {

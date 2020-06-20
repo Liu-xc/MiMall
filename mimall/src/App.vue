@@ -25,5 +25,5 @@ export default {
 }
 </script>
 <style lang="scss">
-@import url('./assets/scss/reset.scss');
+@import './assets/scss/total.scss';
 </style>

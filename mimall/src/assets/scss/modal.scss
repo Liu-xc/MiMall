@@ -1,6 +1,18 @@
 .modal {
   @include position(fixed);
   z-index: 15;
+  top: 0;
+  transition: all .5s;
+
+  &.slide-enter,
+  &.slide-leave-to {
+    top: -100%;
+  }
+
+  // &.slide-enter-to,
+  // &.slide-leave {
+  //   top: 0;
+  // }
 
   .mask {
     @include position(fixed);

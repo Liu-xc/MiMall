@@ -60,7 +60,7 @@
                 <div class="item-info">
                   <h3>{{item.name}}</h3>
                   <p>{{item.subtitle}}</p>
-                  <p class="price">{{item.price | currency}}</p>
+                  <p class="price" @click="addCart(item.id)">{{item.price | currency}}</p>
                 </div>
               </div>
             </div>
@@ -69,7 +69,15 @@
       </div>
     </div>
     <service-bar></service-bar>
-    <modal title="提示" sureText="查看购物车" btnType="1" modalType="middle" :showModal="showModal">
+    <modal
+      @submit="gotoCart"
+      @cancel="()=>{this.showModal=false}"
+      title="提示"
+      sureText="查看购物车"
+      btnType="1"
+      modalType="middle"
+      :showModal="showModal"
+    >
       <template v-slot:body>
         <p>商品添加成功！</p>
       </template>
@@ -95,7 +103,7 @@ export default {
   },
   data () {
     return {
-      showModal: true,
+      showModal: false,
       swiperOption: {
         autoplay: true,
         loop: true,
@@ -190,6 +198,19 @@ export default {
         }
       }
       this.phoneLIst = list
+    },
+    addCart (id) {
+      this.showModal = !!id
+      return;
+      // this.axios.post('/carts', {
+      //   productId: id,
+      //   selected: true
+      // }).then(() => {
+      // }).catch(() => {
+      // })
+    },
+    gotoCart () {
+      this.$router.push('/cart')
     }
   },
   filters: {

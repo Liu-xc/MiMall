@@ -9,6 +9,7 @@ import Order from '../pages/order'
 import OrderConfirm from '../pages/orderConfirm'
 import OrderPay from '../pages/orderPay'
 import OrderList from '../pages/orderList'
+import Login from '../pages/login'
 
 Vue.use(VueRouter)
 
@@ -62,6 +63,11 @@ const routes = [
         component: OrderPay
       }
     ]
+  },
+  {
+    path: '/login',
+    neme: 'login',
+    component: Login
   }
 ]
 

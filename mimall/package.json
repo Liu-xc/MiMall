@@ -16,7 +16,7 @@
     "register-service-worker": "^1.7.1",
     "sass-loader": "^8.0.2",
     "scss-loader": "0.0.1",
-    "swiper": "^5.4.5",
+    "swiper": "^6.5.1",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^2.1.5",
